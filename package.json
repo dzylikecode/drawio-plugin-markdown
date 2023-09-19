@@ -1,0 +1,21 @@
+{
+  "name": "drawio-plugin-markdown",
+  "displayName": "Draw.io: Markdown plugin",
+  "description": "Markdown plugin for Draw.io Desktop",
+  "version": "0.0.0",
+  "license": "GPL-3.0",
+  "publisher": "dzylikecode",
+  "repository": "https://github.com/dzylikecode/drawio-plugin-markdown",
+  "readme": "./README.md",
+  "scripts": {
+    "webpack:production": "webpack --mode production",
+    "webpack:development": "webpack --mode development",
+    "build": "npm run webpack:production",
+    "dev": "npm run webpack:development"
+  },
+  "devDependencies": {
+    "marked": "^9.0.3",
+    "webpack": "^5.59.1",
+    "webpack-cli": "^4.9.1"
+  }
+}
