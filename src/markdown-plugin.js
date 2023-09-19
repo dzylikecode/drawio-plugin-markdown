@@ -4,8 +4,10 @@
 const markdownStyleTag = "pluginMarkdown=1;";
 
 import { marked } from "marked";
+import katex from "katex";
 
 Draw.loadPlugin(function (ui) {
+  initMarked();
   mxResources.parse("useMarkdown=use markdown syntax");
   mxResources.parse("noMarkdown=don't use markdown syntax");
   // Adds action
@@ -261,4 +263,51 @@ class DialogMarkdown {
       }
     }
   }
+}
+
+function initMarked() {
+  const extension = {
+    name: "math",
+    level: "inline",
+    start(src) {
+      let index = src.match(/\$/)?.index;
+      return index;
+    },
+    tokenizer(src, tokens) {
+      const blockRule = /^\$\$((\\.|[^\$\\])+)\$\$/;
+      const inlineRule = /^\$((\\.|[^\$\\])+)\$/;
+      let match;
+      if ((match = blockRule.exec(src))) {
+        return {
+          type: "math",
+          raw: match[0],
+          text: match[1].trim(),
+          mathLevel: "block",
+        };
+      } else if ((match = inlineRule.exec(src))) {
+        return {
+          type: "math",
+          raw: match[0],
+          text: match[1].trim(),
+          mathLevel: "inline",
+        };
+      }
+    },
+    renderer(token) {
+      if (token.mathLevel === "block") {
+        return katex.renderToString(token.text, {
+          throwOnError: false,
+          displayMode: true,
+          output: "mathml",
+        });
+      } else if (token.mathLevel === "inline") {
+        return katex.renderToString(token.text, {
+          throwOnError: false,
+          displayMode: false,
+          output: "mathml",
+        });
+      }
+    },
+  };
+  marked.use({ extensions: [extension] });
 }
