@@ -96,3 +96,8 @@ this.graph.cellRenderer.getLabelValue = function (state) {
   return result;
 };
 ```
+
+## References
+
+- [External plugins in draw.io - DEV Community](https://dev.to/parrotypoisson/external-plugins-in-drawio-25hd)
+- [nopeslide/drawio_mermaid_plugin: Mermaid plugin for drawio desktop](https://github.com/nopeslide/drawio_mermaid_plugin)
