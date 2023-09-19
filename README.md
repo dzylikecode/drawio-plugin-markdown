@@ -44,6 +44,10 @@ Markdown supports:
 11. click `Apply`
 12. confirm Dialog
 
+---
+
+copy the code in the `dist/`
+
 **Draw.io copies the plugin into an internal directory, making updates impossible!**
 
 To link the plugin with the repository:
