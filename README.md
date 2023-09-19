@@ -4,8 +4,10 @@ This draw.io plugins integrates the markdown generator.
 
 Markdown supports:
 
-- markdown: v0.0.0
-- Katex: v0.1.0
+> different version support different function
+
+- markdown: [v0.0.0](https://github.com/dzylikecode/drawio-plugin-markdown/tree/v0.0.0)
+- Katex: [v0.1.0](https://github.com/dzylikecode/drawio-plugin-markdown/tree/v0.1.0)
 
 ## Overview
 
