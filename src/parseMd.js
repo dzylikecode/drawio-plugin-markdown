@@ -1,22 +1,23 @@
-import { Marked } from "marked";
-import { markedHighlight } from "marked-highlight";
-import prism from "./prism/prism";
-import "prismjs/themes/prism.css";
+import { marked } from "marked";
+// import { Marked } from "marked";
+// import { markedHighlight } from "marked-highlight";
+// import prism from "./prism/prism";
+// import "prismjs/themes/prism.css";
 // import katex from "katex";
 // import "katex/dist/katex.min.css";
 //https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css
-const marked = new Marked(
-  markedHighlight({
-    // langPrefix: "hljs language-",
-    highlight(code, lang) {
-      if (prism.languages[lang]) {
-        return prism.highlight(code, prism.languages[lang], lang);
-      } else {
-        return code;
-      }
-    },
-  })
-);
+// const marked = new Marked(
+//   markedHighlight({
+//     // langPrefix: "hljs language-",
+//     highlight(code, lang) {
+//       if (prism.languages[lang]) {
+//         return prism.highlight(code, prism.languages[lang], lang);
+//       } else {
+//         return code;
+//       }
+//     },
+//   })
+// );
 
 const katexExtension = {
   name: "math",
