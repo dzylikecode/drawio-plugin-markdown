@@ -1,0 +1,6 @@
+**/*
+!package.json
+!dist/vscode_extension.js
+!README.md
+!doc/logo.drawio.png
+!Changelog.md
