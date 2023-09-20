@@ -8,9 +8,9 @@ that adds full markdown support.
 
 Markdown supports:
 
-- Markdown
-- Katex
-- highlight
+- Markdown: v0.0.x
+- Katex: v0.1.x
+- highlight: v0.2.x
 
 ## Installation
 
