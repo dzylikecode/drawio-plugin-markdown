@@ -3,7 +3,11 @@
  */
 const markdownStyleTag = "pluginMarkdown=1;";
 
-import ParseMarkdown from "./parseMd";
+const marked = {
+  parse: (text) => {
+    return text;
+  },
+};
 
 Draw.loadPlugin(function (ui) {
   mxResources.parse("useMarkdown=use markdown syntax");
@@ -115,7 +119,9 @@ function ExtractMarkdown(text) {
  * @returns the string in data-content is escaped
  */
 function WrapMarkdown(text) {
-  return `<div data-content="${escapeHtml(text)}">${ParseMarkdown(text)}</div>`;
+  return `<div data-content="${escapeHtml(text)}">${marked
+    .parse(text)
+    .replace(/\n/g, "")}</div>`;
 }
 
 class DialogMarkdown {
@@ -195,8 +201,9 @@ class DialogMarkdown {
 
       function previewMarkdown() {
         try {
+          marked.parse(textarea.value);
           // Display preview
-          preview.innerHTML = ParseMarkdown(textarea.value);
+          preview.innerHTML = marked.parse(textarea.value);
         } catch (e) {
           console.log(e);
         }

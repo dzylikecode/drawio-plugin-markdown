@@ -2,3 +2,5 @@ node_modules/
 package-lock.json
 temp/
 doc/
+vscode-extension/
+prism/

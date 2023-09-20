@@ -8,6 +8,7 @@ Markdown supports:
 
 - markdown: [v0.0.0](https://github.com/dzylikecode/drawio-plugin-markdown/tree/v0.0.0)
 - Katex: [v0.1.0](https://github.com/dzylikecode/drawio-plugin-markdown/tree/v0.1.0)
+- highlight:
 
 ## Overview
 
@@ -104,3 +105,4 @@ this.graph.cellRenderer.getLabelValue = function (state) {
 
 - [External plugins in draw.io - DEV Community](https://dev.to/parrotypoisson/external-plugins-in-drawio-25hd)
 - [nopeslide/drawio_mermaid_plugin: Mermaid plugin for drawio desktop](https://github.com/nopeslide/drawio_mermaid_plugin)
+  [michaeldhead/vue32-markdown: Vue 3.2 Markdown using Marked.js and PrismJS](https://github.com/michaeldhead/vue32-markdown)
