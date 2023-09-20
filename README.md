@@ -1,4 +1,6 @@
-# Draw.io Desktop Markdown Plugin
+# Draw.io Markdown Plugin
+
+- [Draw.io Markdown Plugin for vscode extension](vscode/README.md)
 
 This draw.io plugins integrates the markdown generator.
 
@@ -14,6 +16,8 @@ Markdown supports:
 
 - Example
 
+  ![](assets/2023-09-20-20-35-31.png)
+
 ## Usage
 
 - double click on a shape and edit the markdown script, the shape will be redrawn after leaving the editor
@@ -23,12 +27,6 @@ Markdown supports:
 ![](assets/2023-09-19-11-09-12.png)
 
 ![](assets/2023-09-19-11-09-22.png)
-
-## Properties
-
-- All markdown configuration options are reflected as draw.io shape properties.
-
-![](/doc/properties.gif)
 
 ## How to build
 
