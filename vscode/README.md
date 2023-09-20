@@ -14,23 +14,25 @@ Markdown supports:
 
 ## Installation
 
-- [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=nopeslide.vscode-drawio-plugin-mermaid)
-- [OpenVSX Marketplace](https://open-vsx.org/extension/nopeslide/vscode-drawio-plugin-mermaid)
+- VS Code Marketplace
 
 ## Overview
 
-- Example diagrams
-  ![](/doc/overview.png)
+![](assets/2023-09-20-14-06-30.png)
 
 ## Usage
 
 - double click on a shape and edit the mermaid script, the shape will be redrawn after leaving the editor
 
-![](/doc/demo.gif)
+![](assets/2023-09-19-11-08-40.png)
+
+![](assets/2023-09-19-11-09-12.png)
+
+![](assets/2023-09-19-11-09-22.png)
 
 ## How to build
 
-1. `git clone --recursive https://github.com/nopeslide/drawio_mermaid_plugin.git`
+1. `git clone --recursive https://github.com/dzylikecode/drawio-plugin-markdown.git`
 2. `cd drawio_mermaid_plugin/drawio_desktop`
 3. `npm install`
 4. `npm run build`
@@ -40,4 +42,8 @@ Markdown supports:
 
 ## Draw.io desktop
 
-See [github](https://github.com/nopeslide/drawio_mermaid_plugin/tree/master/drawio_desktop) for the desktop variant of this plugin.
+See [github](https://github.com/dzylikecode/drawio-plugin-markdown) for the desktop variant of this plugin.
+
+## References
+
+- [nopeslide/drawio_mermaid_plugin: Mermaid plugin for drawio desktop](https://github.com/nopeslide/drawio_mermaid_plugin)
