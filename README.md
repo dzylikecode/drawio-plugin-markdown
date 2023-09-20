@@ -1,4 +1,6 @@
-# Draw.io Desktop Markdown Plugin
+# Draw.io Markdown Plugin
+
+- [Draw.io Markdown Plugin for vscode extension](vscode/README.md)
 
 This draw.io plugins integrates the markdown generator.
 
@@ -7,12 +9,14 @@ Markdown supports:
 > different version support different function
 
 - markdown: [v0.0.0](https://github.com/dzylikecode/drawio-plugin-markdown/tree/v0.0.0)
-- Katex: [v0.1.0](https://github.com/dzylikecode/drawio-plugin-markdown/tree/v0.1.0)
-- highlight:
+- Katex: [v0.1.0](https://github.com/dzylikecode/drawio-plugin-markdown/tree/v0.1.0) | MathJax: [v0.3.0](https://github.com/dzylikecode/drawio-plugin-markdown/tree/v0.3.0)
+- highlight: [v0.2.0](https://github.com/dzylikecode/drawio-plugin-markdown/tree/v0.2.0)
 
 ## Overview
 
 - Example
+
+  ![](assets/2023-09-20-20-35-31.png)
 
 ## Usage
 
@@ -23,12 +27,6 @@ Markdown supports:
 ![](assets/2023-09-19-11-09-12.png)
 
 ![](assets/2023-09-19-11-09-22.png)
-
-## Properties
-
-- All markdown configuration options are reflected as draw.io shape properties.
-
-![](/doc/properties.gif)
 
 ## How to build
 
