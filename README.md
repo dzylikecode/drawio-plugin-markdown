@@ -7,8 +7,8 @@ Markdown supports:
 > different version support different function
 
 - markdown: [v0.0.0](https://github.com/dzylikecode/drawio-plugin-markdown/tree/v0.0.0)
-- Katex: [v0.1.0](https://github.com/dzylikecode/drawio-plugin-markdown/tree/v0.1.0)
-- highlight:
+- Katex: [v0.1.0](https://github.com/dzylikecode/drawio-plugin-markdown/tree/v0.1.0) | MathJax: [v0.3.0](https://github.com/dzylikecode/drawio-plugin-markdown/tree/v0.3.0)
+- highlight: [v0.2.0](https://github.com/dzylikecode/drawio-plugin-markdown/tree/v0.2.0)
 
 ## Overview
 
