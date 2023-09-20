@@ -77,8 +77,15 @@ function unescapeHtml(escapeHtml) {
 function AddAction(ui) {
   ui.actions.addAction("useMarkdown", function () {
     const graph = ui.editor.graph;
-    graph.getModel().beginUpdate();
     const curCell = graph.getSelectionCell();
+    if (typeof curCell.value !== "string") {
+      ui.showError(
+        "markdown plugin",
+        "The cell doesn't support Markdown syntax"
+      );
+      return;
+    }
+    graph.getModel().beginUpdate();
     curCell.setStyle(markdownStyleTag + curCell.style);
     // wrap actual content with div tag
     // curCell.setValue(`<div data-content="${unescapeStr}">${unescapeStr}</div>`);
@@ -87,8 +94,12 @@ function AddAction(ui) {
   });
   ui.actions.addAction("noMarkdown", function () {
     const graph = ui.editor.graph;
-    graph.getModel().beginUpdate();
     const curCell = graph.getSelectionCell();
+    if (typeof curCell.value !== "string") {
+      ui.showError("markdown plugin", "This won't happen");
+      return;
+    }
+    graph.getModel().beginUpdate();
     curCell.setStyle(curCell.style.replace(markdownStyleTag, ""));
     graph.labelChanged(curCell, escapeHtml(ExtractMarkdown(curCell.value))); // current content is html string
     graph.getModel().endUpdate();
