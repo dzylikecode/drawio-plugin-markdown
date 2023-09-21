@@ -2,7 +2,7 @@
   "name": "vscode-drawio-plugin-markdown",
   "displayName": "Draw.io Integration: Markdown plugin",
   "description": "Markdown plugin for Draw.io Integration",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "license": "GPL-3.0",
   "publisher": "dzylikecode",
   "repository": "https://github.com/dzylikecode/drawio-plugin-markdown",
