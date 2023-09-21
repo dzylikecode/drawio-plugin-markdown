@@ -11,6 +11,11 @@
   "engines": {
     "vscode": "^1.46.0"
   },
+  "keywords": [
+    "markdown",
+    "drawio",
+    "extension"
+  ],
   "categories": [
     "Visualization"
   ],
