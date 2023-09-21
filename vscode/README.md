@@ -10,7 +10,7 @@ Markdown supports:
 
 - Markdown: v0.0.x
 - Katex: v0.1.x
-- highlight: v0.2.x
+- highlight: v0.2.x: vscode extension don't support it
 
 ## Installation
 
@@ -18,17 +18,15 @@ Markdown supports:
 
 ## Overview
 
-![](assets/2023-09-20-14-06-30.png)
+![](doc/overview.png)
 
 ## Usage
 
 - double click on a shape and edit the mermaid script, the shape will be redrawn after leaving the editor
 
-![](assets/2023-09-19-11-08-40.png)
+![](doc/edit.png)
 
-![](assets/2023-09-19-11-09-12.png)
-
-![](assets/2023-09-19-11-09-22.png)
+![](doc/edit.png)
 
 ## How to build
 
