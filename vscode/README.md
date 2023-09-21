@@ -18,15 +18,15 @@ Markdown supports:
 
 ## Overview
 
-![](doc/overview.png)
+![](https://github.com/dzylikecode/drawio-plugin-markdown/tree/vscode/vscode/doc/overview.png)
 
 ## Usage
 
 - double click on a shape and edit the mermaid script, the shape will be redrawn after leaving the editor
 
-![](doc/edit.png)
+![](https://github.com/dzylikecode/drawio-plugin-markdown/tree/vscode/vscode/doc/edit.png)
 
-![](doc/edit.png)
+![](https://github.com/dzylikecode/drawio-plugin-markdown/tree/vscode/vscode/doc/edit.png)
 
 ## How to build
 
