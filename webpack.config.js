@@ -9,15 +9,10 @@ module.exports = {
   devtool: "source-map",
   module: {
     rules: [
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
-      },
-      {
-        test: /\.js$/,
-        include: /node_modules\/prismjs/,
-        sideEffects: false,
-      },
+      // {
+      //   test: /\.css$/,
+      //   use: ["style-loader", "css-loader"],
+      // },
     ],
   },
 };

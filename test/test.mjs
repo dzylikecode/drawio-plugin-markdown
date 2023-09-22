@@ -26,3 +26,8 @@ const testString =
 // });
 const res = marked.parse(testString);
 console.log(res);
+const compressHtml = res.replace(
+  /(<code>[\s\S]*?<\/code>)|(\n+)/g,
+  (match, code, newline) => (code ? code : newline ? " " : "")
+);
+console.log(compressHtml);

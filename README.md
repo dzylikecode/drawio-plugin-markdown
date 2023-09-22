@@ -99,6 +99,34 @@ this.graph.cellRenderer.getLabelValue = function (state) {
 };
 ```
 
+- Editor.convertHtmlToText
+
+how to deal with such text
+
+```css
+h1,
+h2 {
+  font-size: 16pt;
+}
+```
+
+```js
+const styleSheet = new CSSStyleSheet();
+styleSheet.replaceSync(cssText);
+console.log(styleSheet);
+const renderPart = document.querySelector("docs-mad");
+for (const rule of styleSheet.cssRules) {
+  const { selectorText } = rule;
+  const elems = renderPart.querySelectorAll(selectorText);
+  for (const elem of elems) {
+    const styleDeclaration = rule.style;
+    for (const property of styleDeclaration) {
+      elem.style[property] = styleDeclaration[property];
+    }
+  }
+}
+```
+
 ## References
 
 - [External plugins in draw.io - DEV Community](https://dev.to/parrotypoisson/external-plugins-in-drawio-25hd)
