@@ -1,139 +1,11 @@
 /**
  * support markdow syntax
  */
-const markdownStyleTag = "pluginMarkdown=1;";
 
 import ParseMarkdown from "./parseMd";
+import { WrapMarkdown, ExtractMarkdown } from "./utils";
 
-Draw.loadPlugin(function (ui) {
-  try {
-    mxResources.parse("useMarkdown=use markdown syntax");
-    mxResources.parse("noMarkdown=don't use markdown syntax");
-    // Adds action
-    AddAction(ui);
-    AddPopupMenuItem(ui);
-    ui.editor.graph.addListener(mxEvent.DOUBLE_CLICK, (sender, evt) =>
-      HandleEditMarkdown(ui, sender, evt)
-    );
-  } catch (e) {
-    console.log(e);
-  }
-});
-function isCellPluginMarkdown(cell) {
-  if (!cell) {
-    return false;
-  }
-  if (cell.style.indexOf(markdownStyleTag) < 0) {
-    return false;
-  }
-  return true;
-}
-function AddPopupMenuItem(ui) {
-  const uiAddPopupMenuItems = ui.menus.addPopupMenuItems;
-  const graph = ui.editor.graph;
-  ui.menus.addPopupMenuItems = function (menu, cell, evt) {
-    uiAddPopupMenuItems.apply(this, arguments);
-    if (graph.isSelectionEmpty()) return;
-    const curCell = graph.getSelectionCell();
-    if (isCellPluginMarkdown(curCell)) {
-      this.addMenuItems(menu, ["-", "noMarkdown"], null, evt);
-    } else {
-      this.addMenuItems(menu, ["-", "useMarkdown"], null, evt);
-    }
-  };
-}
-
-function escapeHtml(text) {
-  // https://stackoverflow.com/questions/6234773/can-i-escape-html-special-chars-in-javascript
-  // Warning: it does not escape quotes so you can't use the output inside attribute values in HTML code.
-  // [](https://stackoverflow.com/questions/6234773/can-i-escape-html-special-chars-in-javascript#:~:text=Warning:%20it%20does%20not%20escape%20quotes%20so%20you%20can't%20use%20the%20output%20inside%20attribute%20values%20in%20HTML%20code)
-
-  // const textNode = document.createTextNode(text);
-  // const div = document.createElement("div");
-  // div.appendChild(textNode);
-  // return div.innerHTML;
-
-  return text
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
-
-function unescapeHtml(escapeHtml) {
-  // const doc = new DOMParser().parseFromString(escapeHtml, "text/html");
-  // return doc.documentElement.textContent;
-
-  // https://www.educative.io/answers/how-to-escape-unescape-html-characters-in-string-in-javascript
-  return escapeHtml
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#039;/g, "'")
-    .replace(/&amp;/g, "&");
-}
-
-function AddAction(ui) {
-  ui.actions.addAction("useMarkdown", function () {
-    const graph = ui.editor.graph;
-    const curCell = graph.getSelectionCell();
-    if (typeof curCell.value !== "string") {
-      ui.showError(
-        "markdown plugin",
-        "The cell doesn't support Markdown syntax"
-      );
-      return;
-    }
-    graph.getModel().beginUpdate();
-    curCell.setStyle(markdownStyleTag + curCell.style);
-    // wrap actual content with div tag
-    // curCell.setValue(`<div data-content="${unescapeStr}">${unescapeStr}</div>`);
-    graph.labelChanged(curCell, WrapMarkdown(unescapeHtml(curCell.value))); // current content is escaped
-    graph.getModel().endUpdate();
-  });
-  ui.actions.addAction("noMarkdown", function () {
-    const graph = ui.editor.graph;
-    const curCell = graph.getSelectionCell();
-    if (typeof curCell.value !== "string") {
-      ui.showError("markdown plugin", "This won't happen");
-      return;
-    }
-    graph.getModel().beginUpdate();
-    curCell.setStyle(curCell.style.replace(markdownStyleTag, ""));
-    graph.labelChanged(curCell, escapeHtml(ExtractMarkdown(curCell.value))); // current content is html string
-    graph.getModel().endUpdate();
-  });
-}
-
-function HandleEditMarkdown(ui, sender, evt) {
-  const cell = evt.getProperty("cell");
-  if (isCellPluginMarkdown(cell)) {
-    const dlg = new DialogMarkdown(ui, cell);
-    evt.consume();
-  }
-}
-
-/**
- *
- * @param {string} text html string
- * @returns
- */
-function ExtractMarkdown(text) {
-  const div = document.createElement("div");
-  div.innerHTML = text;
-  return unescapeHtml(div.firstChild.getAttribute("data-content"));
-}
-/**
- *
- * @param {string} text markdown string, not escape
- * @returns the string in data-content is escaped
- */
-function WrapMarkdown(text) {
-  return `<div data-content="${escapeHtml(text)}">${ParseMarkdown(text)}</div>`;
-}
-
-class DialogMarkdown {
+export default class DialogMarkdown {
   constructor(ui, cell) {
     this.state = { ui, cell };
     const div = document.createElement("div");
@@ -159,6 +31,16 @@ class DialogMarkdown {
     // textarea.value = ui.editor.graph.convertValueToString(
     //   this.state.cell
     // ); // Compatble with cell properties
+
+    textarea.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" && event.shiftKey) {
+        this.updateContent(textarea.value);
+        win.destroy();
+      }
+      if (event.key === "Escape") {
+        win.destroy();
+      }
+    });
 
     const preview = div.querySelector("#plugin_markdown_preview");
     const buttons = div.querySelector("#plugin_markdown_buttons");

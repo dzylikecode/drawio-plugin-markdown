@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./src/markdown-plugin.js",
+  entry: "./src/index.js",
   output: {
     filename: "markdown-plugin.webpack.js",
     path: path.resolve(__dirname, "dist"),
@@ -9,10 +9,11 @@ module.exports = {
   devtool: "source-map",
   module: {
     rules: [
-      // {
-      //   test: /\.css$/,
-      //   use: ["style-loader", "css-loader"],
-      // },
+      {
+        test: /\.css$/,
+        exclude: /^raw-loader!/,
+        use: ["style-loader", "css-loader"],
+      },
     ],
   },
 };
