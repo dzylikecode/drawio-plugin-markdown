@@ -99,14 +99,17 @@ const katexExtension = {
       //   throwOnError: false,
       //   displayMode: true,
       // });
-      return MathJax.tex2svg(token.text, { display: true }).outerHTML;
+      // return MathJax.tex2svg(token.text, { display: true }).outerHTML;
+      return `<div class="MathJax" display="block" style="text-align:center;">${
+        MathJax.tex2svg(token.text, { display: true }).innerHTML
+      }</div>`;
       // return MathJax.tex2mml(token.text, { display: true }).outerHTML;
     } else if (token.mathLevel === "inline") {
       // return katex.renderToString(token.text, {
       //   throwOnError: false,
       //   displayMode: false,
       // });
-      return MathJax.tex2svg(token.text, { display: false }).outerHTML;
+      return MathJax.tex2svg(token.text, { display: false }).innerHTML;
       // return MathJax.tex2mml(token.text, { display: false }).outerHTML;
     }
   },
